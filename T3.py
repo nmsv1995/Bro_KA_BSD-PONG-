@@ -52,11 +52,11 @@ def draw_objects():
     render_kindness_message()
 
 #SCORE
-    def render_score():
+def render_score():
     score_text = font.render(f"Score: {w1_score}", True, WHITE)
     screen.blit(score_text, (screen_width // 2 - 50, 20))
 #Kindness Messages
-    def render_kindness_message():
+def render_kindness_message():
     if kindness_message:
         kindness_text = " ".join(kindness_message)
         message_text = font.render(kindness_text, True, WHITE)
@@ -84,21 +84,21 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # Move paddles
+# Move paddles
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w] and paddle2_y > 0:
         paddle2_y -= paddle_speed
     if keys[pygame.K_s] and paddle2_y < screen_height - paddle_height:
         paddle2_y += paddle_speed
 
-    # Move w1 paddle (computer-driven)
+# Move w1 paddle (computer-driven)
     move_computer_paddle()
 
     # Move ball
     ball_x += ball_speed_x
     ball_y += ball_speed_y
 
-    # Ball collision with paddles
+# GenD collision with paddles
     if ball_x - ball_radius <= 50 + paddle_width and paddle1_y <= ball_y <= paddle1_y + paddle_height:
         ball_speed_x *= -1
         w1_score += 1
@@ -107,22 +107,22 @@ while running:
         ball_speed_x *= -1
         kindness_message = generate_kindness_message()  # Display kindness message for w2
 
-    # Ball collision with top and bottom walls
+# Ball collision with top and bottom walls
     if ball_y - ball_radius <= 1 or ball_y + ball_radius >= screen_height:
         ball_speed_y *= -1
 
-    # Ball out of bounds
+# Ball out of bounds
     if ball_x - ball_radius <= 1 or ball_x + ball_radius >= screen_width:
         ball_x = screen_width // 2
         ball_y = screen_height // 2
         ball_speed_x *= random.choice([-1, 1])
         ball_speed_y *= random.choice([-1, 1])
 
-    # Draw objects
+# Draw objects
     draw_objects()
     pygame.display.flip()
 
-    # Adjust frame rate
+# Adjust frame rate
     pygame.time.Clock().tick(60)
 
 pygame.quit()
