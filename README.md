@@ -37,5 +37,7 @@ Visual Enhancements: Consider adding visual elements or sound effects to accompa
 Multiplayer Support: Explore the possibility of adding multiplayer functionality for online or local battles.
 We welcome your contributions and look forward to seeing how you make Trash Talk Pong even more outrageous!
 
+Please not CP was generated using Stable diffusion
+
 
 Enjoy the game and don't forget to trash talk your opponent THAT IS A DUMB SERVER HOSTED SOME PALCE!
